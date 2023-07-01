@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCAI", "SCAI\SCAI.csproj", "{C5FDB86E-9E73-484B-B3FF-3F5653DD1BDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCAI", "SCAI\SCAI.csproj", "{44443392-882C-44DA-A159-999A01AD225B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C5FDB86E-9E73-484B-B3FF-3F5653DD1BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5FDB86E-9E73-484B-B3FF-3F5653DD1BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5FDB86E-9E73-484B-B3FF-3F5653DD1BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5FDB86E-9E73-484B-B3FF-3F5653DD1BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44443392-882C-44DA-A159-999A01AD225B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44443392-882C-44DA-A159-999A01AD225B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44443392-882C-44DA-A159-999A01AD225B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44443392-882C-44DA-A159-999A01AD225B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3B944B5C-05E7-4EF8-BDA0-0D7ED0C10895}
+		SolutionGuid = {49582685-F35F-42C8-A345-2B251A1F431C}
 	EndGlobalSection
 EndGlobal

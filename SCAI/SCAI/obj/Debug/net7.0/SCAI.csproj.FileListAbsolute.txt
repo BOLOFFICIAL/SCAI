@@ -1,6 +1,5 @@
 D:\Projects\SCAI\SCAI\SCAI\bin\Debug\net7.0\appsettings.Development.json
 D:\Projects\SCAI\SCAI\SCAI\bin\Debug\net7.0\appsettings.json
-D:\Projects\SCAI\SCAI\SCAI\bin\Debug\net7.0\SCAI.staticwebassets.runtime.json
 D:\Projects\SCAI\SCAI\SCAI\bin\Debug\net7.0\SCAI.exe
 D:\Projects\SCAI\SCAI\SCAI\bin\Debug\net7.0\SCAI.deps.json
 D:\Projects\SCAI\SCAI\SCAI\bin\Debug\net7.0\SCAI.runtimeconfig.json
@@ -12,8 +11,6 @@ D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.AssemblyInfoInputs.cache
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.AssemblyInfo.cs
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.csproj.CoreCompileInputs.cache
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.MvcApplicationPartsAssemblyInfo.cache
-D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.RazorAssemblyInfo.cache
-D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.RazorAssemblyInfo.cs
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\staticwebassets\msbuild.SCAI.Microsoft.AspNetCore.StaticWebAssets.props
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\staticwebassets\msbuild.build.SCAI.props
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.SCAI.props
@@ -21,9 +18,7 @@ D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\staticwebassets\msbuild.buildTransit
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\staticwebassets.pack.json
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\staticwebassets.build.json
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\staticwebassets.development.json
-D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\scopedcss\bundle\SCAI.styles.css
-D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\scopedcss\projectbundle\SCAI.bundle.scp.css
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.dll
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\refint\SCAI.dll
 D:\Projects\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.pdb
