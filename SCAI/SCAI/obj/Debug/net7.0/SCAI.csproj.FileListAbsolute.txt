@@ -52,3 +52,4 @@ C:\Users\mrzom\Source\Repos\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.genruntimeconfi
 C:\Users\mrzom\Source\Repos\SCAI\SCAI\SCAI\obj\Debug\net7.0\ref\SCAI.dll
 C:\Users\mrzom\source\repos\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.RazorAssemblyInfo.cache
 C:\Users\mrzom\source\repos\SCAI\SCAI\SCAI\obj\Debug\net7.0\SCAI.RazorAssemblyInfo.cs
+C:\Users\mrzom\source\repos\SCAI\SCAI\SCAI\bin\Debug\net7.0\SCAI.staticwebassets.runtime.json

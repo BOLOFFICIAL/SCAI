@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "4PR33iXamSSi5a5ptN3NRo/CXYkuHuw+KiiGhsmGpOA=",
+  "Hash": "3mO/9qS8bbRaHPKTm0bQ+nQNI4FqFsWkix1ak1cktHo=",
   "Source": "SCAI",
   "BasePath": "_content/SCAI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SCAI\\wwwroot",
+      "Source": "SCAI",
+      "ContentRoot": "C:\\Users\\mrzom\\source\\repos\\SCAI\\SCAI\\SCAI\\wwwroot\\",
+      "BasePath": "_content/SCAI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
