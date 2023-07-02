@@ -8,23 +8,23 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\mrzom\\.nuget\\packages\\": {},
-    "D:\\VisualStudio\\Packages_and_etc\\NuGetPackages": {}
+    "C:\\Users\\Bolofficial\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mrzom\\Source\\Repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj",
+      "projectUniqueName": "D:\\Projects\\SCAI\\SCAI\\SCAI\\SCAI.csproj",
       "projectName": "SCAI",
-      "projectPath": "C:\\Users\\mrzom\\Source\\Repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj",
-      "packagesPath": "C:\\Users\\mrzom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mrzom\\Source\\Repos\\SCAI\\SCAI\\SCAI\\obj\\",
+      "projectPath": "D:\\Projects\\SCAI\\SCAI\\SCAI\\SCAI.csproj",
+      "packagesPath": "C:\\Users\\Bolofficial\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\SCAI\\SCAI\\SCAI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\VisualStudio\\Packages_and_etc\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\mrzom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bolofficial\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -32,6 +32,7 @@
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
