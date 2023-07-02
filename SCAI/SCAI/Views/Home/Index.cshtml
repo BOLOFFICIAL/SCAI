@@ -6,13 +6,22 @@
 <html>
 <head>
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/StyleIndex.css" />
 </head>
 <body>
     <h2>Image Upload</h2>
 
     <form method="post" enctype="multipart/form-data">
-        <input type="file" name="imageFile" />
-        <input type="submit" value="Upload" />
+        <div class="center-align">
+            <label for="imageFile">
+                <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="document.getElementById('selectedFileName').innerHTML = this.files[0].name;" />
+                <button type="button" onclick="document.getElementById('imageFile').click();">Выбрать файл</button>
+            </label>
+            <br />
+            <label id="selectedFileName"></label>
+            <br />
+            <input type="submit" value="Отправить" />
+        </div>
     </form>
 </body>
 </html>

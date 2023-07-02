@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\SCAI.bundle.scp.css"
     },
     {
+      "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\css\\StyleIndex.css",
+      "PackagePath": "staticwebassets\\css\\StyleIndex.css"
+    },
+    {
       "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\files\\fa942736-9db8-4fa9-8d98-78dd6e17ba2d_Рекоммендации по C#.docx",
+      "PackagePath": "staticwebassets\\files\\fa942736-9db8-4fa9-8d98-78dd6e17ba2d_Рекоммендации по C#.docx"
     },
     {
       "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\js\\site.js",

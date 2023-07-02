@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2EwsdR69b8kUJ3dMQtyH8/lCSzxEhhBEz7FYOloBJko=",
+  "Hash": "GVOljkvKOipfWX6iOJpe18IBieYju7M0n8nAA+OPVfs=",
   "Source": "SCAI",
   "BasePath": "_content/SCAI",
   "Mode": "Default",
@@ -68,6 +68,23 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\css\\StyleIndex.css",
+      "SourceId": "SCAI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\",
+      "BasePath": "_content/SCAI",
+      "RelativePath": "css/StyleIndex.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\StyleIndex.css"
+    },
+    {
       "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\favicon.ico",
       "SourceId": "SCAI",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\files\\fa942736-9db8-4fa9-8d98-78dd6e17ba2d_Рекоммендации по C#.docx",
+      "SourceId": "SCAI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\",
+      "BasePath": "_content/SCAI",
+      "RelativePath": "files/fa942736-9db8-4fa9-8d98-78dd6e17ba2d_Рекоммендации по C#.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\fa942736-9db8-4fa9-8d98-78dd6e17ba2d_Рекоммендации по C#.docx"
     },
     {
       "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\js\\site.js",
