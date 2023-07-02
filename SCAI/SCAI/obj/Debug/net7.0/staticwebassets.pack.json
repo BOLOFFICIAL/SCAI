@@ -9,16 +9,16 @@
       "PackagePath": "staticwebassets\\css\\StyleIndex.css"
     },
     {
-      "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
-    },
-    {
       "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\files\\fa942736-9db8-4fa9-8d98-78dd6e17ba2d_Рекоммендации по C#.docx",
-      "PackagePath": "staticwebassets\\files\\fa942736-9db8-4fa9-8d98-78dd6e17ba2d_Рекоммендации по C#.docx"
+      "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\files\\d2a72780-9801-4db5-a6e4-6ab190a21cfe_Duckonice.jpg",
+      "PackagePath": "staticwebassets\\files\\d2a72780-9801-4db5-a6e4-6ab190a21cfe_Duckonice.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\files\\d9227dd6-001d-4fd2-b902-96f07ffaa8a1_16883099275717829057798611502300.jpg",
+      "PackagePath": "staticwebassets\\files\\d9227dd6-001d-4fd2-b902-96f07ffaa8a1_16883099275717829057798611502300.jpg"
     },
     {
       "Id": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\js\\site.js",
