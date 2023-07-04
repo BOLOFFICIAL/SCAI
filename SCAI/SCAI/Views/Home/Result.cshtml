@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Result";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/site.js"></script>
+</head>
+<body>
+    <h2>Result</h2>
+
+    <div>
+        @if (Model != null)
+        {
+            <h3>Prediction:</h3>
+            <ul>
+                @foreach (var label in Model.PredictedLabels)
+                {
+                    <li>@label</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No prediction available.</p>
+        }
+    </div>
+</body>
+</html>

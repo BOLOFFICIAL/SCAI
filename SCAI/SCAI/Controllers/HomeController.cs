@@ -48,9 +48,10 @@ namespace SCAI.Controllers
                     {
                         imageFile.CopyTo(fileStream);
                     }
-
                     // Возвращаем сообщение об успешной загрузке
-                    return Ok("Image uploaded successfully.");
+                    /*var prediction = "Тут будет предикт"; //Когда будет всунута нейронка, это надо будет раскомментить и реализовать
+                    return View("Result", prediction);*/
+                    return View("Result");
                 }
                 catch (Exception ex)
                 {
@@ -58,7 +59,7 @@ namespace SCAI.Controllers
                     return BadRequest("Error uploading image: " + ex.Message);
                 }
             }
-            else 
+            else
             {
                 return BadRequest("Error uploading image");
             }
