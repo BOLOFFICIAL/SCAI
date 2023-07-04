@@ -25,42 +25,39 @@ namespace SCAI.Controllers
         [HttpPost]
         public IActionResult Index(IFormFile imageFile)
         {
-            //return View();
+            
             if (imageFile != null && imageFile.Length > 0)
             {
                 try
                 {
-                    // Генерируем уникальное имя файла
+                    if (ValidationFile(imageFile.FileName)) 
+                    {
+                        throw new Exception("Фаил не является картинкой");
+                    }
                     string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
-
-                    // Определяем путь к папке, где будут сохранены изображения на сервере
                     string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "files");
-
-                    // Создаем папку, если она не существует
                     if (!Directory.Exists(imagePath))
                     {
                         Directory.CreateDirectory(imagePath);
                     }
-
-                    // Сохраняем файл на сервере
                     string filePath = Path.Combine(imagePath, uniqueFileName);
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         imageFile.CopyTo(fileStream);
                     }
-
-                    // Возвращаем сообщение об успешной загрузке
-                    return Ok("Image uploaded successfully.");
+                    TempData["ResultMessage"] = "Фото сохранено на сервере с названием " + uniqueFileName;
+                    return RedirectPermanent("~/Home/Result");
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
-                    // Если произошла ошибка при сохранении файла, обрабатываем ее
-                    return BadRequest("Error uploading image: " + ex.Message);
+                    TempData["ErrorMessage"] = ex.Message.ToString();
+                    return RedirectPermanent("~/Home/Error");
                 }
             }
             else 
             {
-                return BadRequest("Error uploading image");
+                TempData["ErrorMessage"] = "Не удалось загрузить файл";
+                return RedirectPermanent("~/Home/Error");
             }
         }
 
@@ -69,10 +66,32 @@ namespace SCAI.Controllers
             return View();
         }
 
+        public IActionResult Result()
+        {
+            ViewBag.Message = TempData["ResultMessage"] as string;
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            ViewBag.Error = TempData["ErrorMessage"] as string;
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private bool ValidationFile(string fileName)
+        {
+            string type = Path.GetExtension(fileName);
+            switch (type)
+            {
+                case ".jpg":
+                case ".jpeg":
+                case ".png":
+                case ".svg":
+                    return false;
+                default:
+                    return true;
+            }
         }
     }
 }

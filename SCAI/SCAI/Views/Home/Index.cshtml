@@ -10,18 +10,19 @@
     <script src="~/js/site.js"></script>
 </head>
 <body>
-    <h2>Image Upload</h2>
-
+    <h3>Image Upload</h3>
     <form method="post" enctype="multipart/form-data">
         <div class="center-align">
             <label for="imageFile">
+                <div id="dropZone" class="drop-zone" ondragover="handleDragOver(event);" ondragleave="handleDragLeave(event);" ondrop="handleDrop(event);">
+                    +
+                </div>
                 <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="showPreview(this);" />
-                <button type="button" onclick="document.getElementById('imageFile').click();">Выбрать файл</button>
             </label>
             <br />
-            <img id="selectedImage" style="max-width: 300px; max-height: 300px;" />
+            <img id="selectedImage" class="img" />
             <br />
-            <input type="submit" value="Отправить" />
+            <input type="submit" value="Анализ" id="analysisButton" class="submit-button" style="display: none;" />
         </div>
     </form>
 </body>
