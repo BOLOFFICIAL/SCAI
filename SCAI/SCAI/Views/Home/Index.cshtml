@@ -6,7 +6,8 @@
 <html>
 <head>
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/StyleIndex.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/site.js"></script>
 </head>
 <body>
     <h2>Image Upload</h2>
@@ -14,11 +15,11 @@
     <form method="post" enctype="multipart/form-data">
         <div class="center-align">
             <label for="imageFile">
-                <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="document.getElementById('selectedFileName').innerHTML = this.files[0].name;" />
+                <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="showPreview(this);" />
                 <button type="button" onclick="document.getElementById('imageFile').click();">Выбрать файл</button>
             </label>
             <br />
-            <label id="selectedFileName"></label>
+            <img id="selectedImage" style="max-width: 300px; max-height: 300px;" />
             <br />
             <input type="submit" value="Отправить" />
         </div>

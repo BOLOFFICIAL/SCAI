@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JLfKvzOAAcLtgYGKT0/IC8gVZa56wvuAbjpUGETjn1k=",
+  "Hash": "2EwsdR69b8kUJ3dMQtyH8/lCSzxEhhBEz7FYOloBJko=",
   "Source": "SCAI",
   "BasePath": "_content/SCAI",
   "Mode": "Default",
@@ -51,12 +51,12 @@
       "OriginalItemSpec": "D:\\Projects\\SCAI\\SCAI\\SCAI\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\SCAI.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\css\\StyleIndex.css",
+      "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\css\\site.css",
       "SourceId": "SCAI",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\",
       "BasePath": "_content/SCAI",
-      "RelativePath": "css/StyleIndex.css",
+      "RelativePath": "css/site.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,7 +65,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\StyleIndex.css"
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
       "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\favicon.ico",
@@ -83,40 +83,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\files\\d2a72780-9801-4db5-a6e4-6ab190a21cfe_Duckonice.jpg",
-      "SourceId": "SCAI",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\",
-      "BasePath": "_content/SCAI",
-      "RelativePath": "files/d2a72780-9801-4db5-a6e4-6ab190a21cfe_Duckonice.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\files\\d2a72780-9801-4db5-a6e4-6ab190a21cfe_Duckonice.jpg"
-    },
-    {
-      "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\files\\d9227dd6-001d-4fd2-b902-96f07ffaa8a1_16883099275717829057798611502300.jpg",
-      "SourceId": "SCAI",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\",
-      "BasePath": "_content/SCAI",
-      "RelativePath": "files/d9227dd6-001d-4fd2-b902-96f07ffaa8a1_16883099275717829057798611502300.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\files\\d9227dd6-001d-4fd2-b902-96f07ffaa8a1_16883099275717829057798611502300.jpg"
     },
     {
       "Identity": "D:\\Projects\\SCAI\\SCAI\\SCAI\\wwwroot\\js\\site.js",
