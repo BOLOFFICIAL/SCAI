@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mrzom\\Source\\Repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj": {}
+    "C:\\Users\\mrzom\\source\\repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mrzom\\Source\\Repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj": {
+    "C:\\Users\\mrzom\\source\\repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mrzom\\Source\\Repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj",
+        "projectUniqueName": "C:\\Users\\mrzom\\source\\repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj",
         "projectName": "SCAI",
-        "projectPath": "C:\\Users\\mrzom\\Source\\Repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj",
+        "projectPath": "C:\\Users\\mrzom\\source\\repos\\SCAI\\SCAI\\SCAI\\SCAI.csproj",
         "packagesPath": "C:\\Users\\mrzom\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mrzom\\Source\\Repos\\SCAI\\SCAI\\SCAI\\obj\\",
+        "outputPath": "C:\\Users\\mrzom\\source\\repos\\SCAI\\SCAI\\SCAI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\VisualStudio\\Packages_and_etc\\NuGetPackages"
