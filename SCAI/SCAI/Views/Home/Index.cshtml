@@ -14,15 +14,17 @@
 
     <form method="post" enctype="multipart/form-data">
         <div class="center-align">
-            <label for="imageFile">
-                <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="showPreview(this);" />
-                <button type="button" onclick="document.getElementById('imageFile').click();">Выбрать файл</button>
+            <label class="drop-zone" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                Перетащите файл сюда или нажмите для выбора файла
+                <input type="file" id="imageFile" name="imageFile" accept="image/*" onchange="showPreview(this);" />
             </label>
             <br />
-            <img id="selectedImage" style="max-width: 300px; max-height: 300px;" />
+            <img id="selectedImage" style="max-width: 500px; max-height: 500px;" onclick="triggerFileInput()" 
+                 ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleImageDragLeave(event)" @*ondblclick="uploadImage()"*@ />
             <br />
-            <input type="submit" value="Отправить" />
+            <input type="submit" value="Анализ" />
         </div>
     </form>
+
 </body>
 </html>
