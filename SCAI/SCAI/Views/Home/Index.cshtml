@@ -12,11 +12,18 @@
 <body>
     <h2>Image Upload</h2>
 
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+            alert('@TempData["ErrorMessage"]');
+        </script>
+    }
+
     <form method="post" enctype="multipart/form-data">
         <div class="center-align">
             <label class="drop-zone" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
                 Перетащите файл сюда или нажмите для выбора файла
-                <input type="file" id="imageFile" name="imageFile" accept="image/*" onchange="showPreview(this);" />
+                <input type="file" id="imageFile" name="imageFile" accept="image/jpg, image/jpeg, image/png" onchange="showPreview(this);" />
             </label>
             <br />
             <img id="selectedImage" style="max-width: 500px; max-height: 500px;" onclick="triggerFileInput()" 

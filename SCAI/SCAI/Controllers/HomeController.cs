@@ -10,6 +10,13 @@ namespace SCAI.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ILogger<HomeController> _logger;
 
+        private bool IsSupportedFormat(IFormFile file)
+        {
+            string[] allowedFormats = { ".jpg", ".jpeg", ".png" };
+            string fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            return allowedFormats.Contains(fileExtension);
+        }
+
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
@@ -25,7 +32,11 @@ namespace SCAI.Controllers
         [HttpPost]
         public IActionResult Index(IFormFile imageFile)
         {
-            //return View();
+            if (!IsSupportedFormat(imageFile))
+            {
+                TempData["ErrorMessage"] = "Выберите файл в формате JPG, JPEG или PNG.";
+                return RedirectToAction("Index");
+            }
             if (imageFile != null && imageFile.Length > 0)
             {
                 try
@@ -49,9 +60,9 @@ namespace SCAI.Controllers
                         imageFile.CopyTo(fileStream);
                     }
                     // Возвращаем сообщение об успешной загрузке
+                    return Ok("Image uploaded successfully.");
                     /*var prediction = "Тут будет предикт"; //Когда будет всунута нейронка, это надо будет раскомментить и реализовать
                     return View("Result", prediction);*/
-                    return View("Result");
                 }
                 catch (Exception ex)
                 {
