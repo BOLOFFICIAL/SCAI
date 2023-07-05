@@ -47,7 +47,7 @@ namespace SCAI.Controllers
                     {
                         imageFile.CopyTo(fileStream);
                     }
-                    TempData["Result"] = JsonConvert.SerializeObject(new ResultData(analise.AnalisePhoto(filePath)));
+                    TempData["Result"] = JsonConvert.SerializeObject(new ResultData(MlAnalis.Analise(filePath)));
                     return RedirectPermanent("~/Home/Result");
                 }
                 catch (Exception ex)
@@ -70,9 +70,10 @@ namespace SCAI.Controllers
 
         public IActionResult Result()
         {
-            var result = JsonConvert.DeserializeObject<ResultData>(TempData["Result"] as string);
-            ViewBag.BestValue = result.BestValue;
-            ViewBag.BestClass = SkinCancers.Cancers[result.BestClass]; 
+            var e = TempData["Result"] as string;
+            var result = JsonConvert.DeserializeObject<ResultData>(e);
+            ViewBag.BestValue = Math.Round(result.BestValue,3).ToString()+"%";
+            ViewBag.BestClass = result.BestClass;
             ViewBag.ResultMessage = result.AllResults; 
             return View();
         }
