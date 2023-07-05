@@ -24,8 +24,7 @@ namespace SCAI.Models
                 var max = AllResults.OrderByDescending(x => x.Value).First();
                 BestValue = max.Value;
                 BestClass = max.Key;
-                AllResults.Remove(BestClass);
-            }
+            }   
         }
     }
 }
