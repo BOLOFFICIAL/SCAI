@@ -13,7 +13,16 @@
     <h2>Result</h2>
 
     <div>
-        <p>@ViewBag.Message</p>
+        <p>Лучшее значение @ViewBag.BestValue</p>
+    </div>
+    <div>
+        <p>Результат @ViewBag.BestClass</p>
+    </div>
+    <div>
+        @foreach (var result in ViewBag.ResultMessage)
+        {
+            <p>@result</p>
+        }
     </div>
 </body>
 </html>

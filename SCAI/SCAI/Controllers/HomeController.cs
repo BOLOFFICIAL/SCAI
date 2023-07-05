@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SCAI.Models;
+using Skin_Cancer;
 using System.Diagnostics;
 
 namespace SCAI.Controllers
@@ -9,6 +10,7 @@ namespace SCAI.Controllers
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ILogger<HomeController> _logger;
+        private ResultData _result;
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
         {
@@ -29,31 +31,32 @@ namespace SCAI.Controllers
             {
                 try
                 {
-                    if (ValidationFile(imageFile.FileName)) 
+                    if (ValidationFile(imageFile.FileName))
                     {
                         throw new Exception("Фаил не является картинкой");
                     }
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
-                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "files");
+                    var analise = new Analise();
+                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
+                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "files");
                     if (!Directory.Exists(imagePath))
                     {
                         Directory.CreateDirectory(imagePath);
                     }
-                    string filePath = Path.Combine(imagePath, uniqueFileName);
+                    var filePath = Path.Combine(imagePath, uniqueFileName);
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                        imageFile.CopyTo(fileStream); 
+                        imageFile.CopyTo(fileStream);
                     }
-                    TempData["ResultMessage"] = "Фото сохранено на сервере с названием " + uniqueFileName;
+                    TempData["Result"] = JsonConvert.SerializeObject(new ResultData(analise.AnalisePhoto(filePath)));
                     return RedirectPermanent("~/Home/Result");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     TempData["ErrorMessage"] = ex.Message.ToString();
                     return RedirectPermanent("~/Home/Error");
                 }
             }
-            else 
+            else
             {
                 TempData["ErrorMessage"] = "Не удалось загрузить файл";
                 return RedirectPermanent("~/Home/Error");
@@ -67,9 +70,13 @@ namespace SCAI.Controllers
 
         public IActionResult Result()
         {
-            ViewBag.Message = TempData["ResultMessage"] as string;
+            var result = JsonConvert.DeserializeObject<ResultData>(TempData["Result"] as string);
+            ViewBag.BestValue = result.BestValue;
+            ViewBag.BestClass = SkinCancers.Cancers[result.BestClass]; 
+            ViewBag.ResultMessage = result.AllResults; 
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
