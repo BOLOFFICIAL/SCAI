@@ -25,7 +25,6 @@ namespace SCAI.Controllers
         [HttpPost]
         public IActionResult Index(IFormFile imageFile)
         {
-            
             if (imageFile != null && imageFile.Length > 0)
             {
                 try
@@ -43,7 +42,7 @@ namespace SCAI.Controllers
                     string filePath = Path.Combine(imagePath, uniqueFileName);
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                        imageFile.CopyTo(fileStream);
+                        imageFile.CopyTo(fileStream); 
                     }
                     TempData["ResultMessage"] = "Фото сохранено на сервере с названием " + uniqueFileName;
                     return RedirectPermanent("~/Home/Result");

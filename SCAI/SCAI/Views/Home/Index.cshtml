@@ -20,10 +20,12 @@
                 <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="showPreview(this);" />
             </label>
             <br />
-            <img id="selectedImage" class="img" />
+            <img id="selectedImage" class="img" onclick="triggerFileInput()"
+                 ondragover="handleDragOver(event);" ondragleave="handleDragLeave(event);" ondrop="handleDrop(event);" />
             <br />
             <input type="submit" value="Анализ" id="analysisButton" class="submit-button" style="display: none;" />
         </div>
     </form>
+
 </body>
 </html>

@@ -36,11 +36,11 @@ body {
     margin-top: 50px; 
 }
 
-    .drop-zone input[type="file"] {
-        opacity: 0;
-        position: absolute;
-        cursor: pointer;
-    }
+.drop-zone input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
 
 .img {
     max-width: 80%;
@@ -58,7 +58,7 @@ body {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-    .submit-button:hover {
-        background-color: brown;
-        color: white;
-    }
+.submit-button:hover {
+    background-color: brown;
+    color: white;
+}
