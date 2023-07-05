@@ -21,3 +21,11 @@ wwwroot/files
 /ngrok.exe
 
 
+/SCAI/SCAI/obj/SCAI.csproj.nuget.g.props
+/SCAI/SCAI/obj/SCAI.csproj.nuget.dgspec.json
+/SCAI/SCAI/obj/project.nuget.cache
+/SCAI/SCAI/obj/project.assets.json
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.GeneratedMSBuildEditorConfig.editorconfig
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.assets.cache
+/SCAI/.vs/SCAI/v17/.futdcache.v2
+/SCAI/.vs/SCAI/DesignTimeBuild/.dtbcache.v2
