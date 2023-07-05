@@ -1,24 +1,23 @@
 #ignore folder with compiled and builded files
-/bin/
-/obj/
-/out/
+bin/
+obj/
+out/
 
 #ignore configuration files and project settings
 *.suo
 *.user
 *.sln.docstates
+*.csproj
 *.csproj.user
 *.vssettings
 
 #ignore uploading files
-wwwroot\files
+wwwroot/files
 
 #ignore VS files
-SCAI.csproj 
-SCAI.csproj.user
-/.vs/
+.vs/
 
 #ignore ngrok
-ngrok.exe
+/ngrok.exe
 
 
