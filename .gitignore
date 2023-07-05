@@ -44,3 +44,13 @@ SCAI.csproj.user
 #ignore ngrok
 ngrok.exe
 /SCAI/SCAI/obj/Debug/net7.0/SCAI.GeneratedMSBuildEditorConfig.editorconfig
+/SCAI/SCAI/bin/Debug/net7.0/SCAI.dll
+/SCAI/SCAI/bin/Debug/net7.0/SCAI.pdb
+/SCAI/SCAI/bin/Debug/net7.0/SCAI.staticwebassets.runtime.json
+/SCAI/SCAI/obj/Debug/net7.0/staticwebassets/msbuild.SCAI.Microsoft.AspNetCore.StaticWebAssets.props
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.dll
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.pdb
+/SCAI/.vs/SCAI/config/applicationhost.config
+/SCAI/SCAI/obj/Debug/net7.0/staticwebassets.build.json
+/SCAI/SCAI/obj/Debug/net7.0/staticwebassets.development.json
+/SCAI/SCAI/obj/Debug/net7.0/staticwebassets.pack.json
