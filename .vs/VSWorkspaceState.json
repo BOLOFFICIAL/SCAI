@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SCAI",
+    "\\SCAI\\SCAI",
+    "\\SCAI\\SCAI.Skin_Cancer",
+    "\\SCAI\\SCAI\\Controllers"
   ],
+  "SelectedNode": "\\SCAI\\SCAI\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }
