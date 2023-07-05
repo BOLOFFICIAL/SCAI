@@ -1,5 +1,7 @@
 ﻿function showPreview(input) {
+    var selectedImageFile; // Переменная для хранения выбранного файла
     if (input.files && input.files[0]) {
+        selectedImageFile = input.files[0]; // Сохраняем выбранный файл в переменную
         var reader = new FileReader();
         reader.onload = function (e) {
             document.getElementById('selectedImage').src = e.target.result;
@@ -8,6 +10,20 @@
         hideDropZone();
         showAnalysisButton();
     }
+}
+
+function cancelSelection() {
+    // Сбросить значение элемента input
+    document.getElementById('imageFile').value = '';
+
+    // Очистить предварительный просмотр картинки
+    document.getElementById('selectedImage').src = '';
+
+    // Показать зону перетаскивания
+    document.querySelector('.drop-zone').style.display = 'block';
+
+    // Очистить переменную с выбранным файлом
+    selectedImageFile = null;
 }
 
 function hideDropZone() {

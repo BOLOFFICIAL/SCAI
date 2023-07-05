@@ -43,3 +43,4 @@ SCAI.csproj.user
 
 #ignore ngrok
 ngrok.exe
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.GeneratedMSBuildEditorConfig.editorconfig
