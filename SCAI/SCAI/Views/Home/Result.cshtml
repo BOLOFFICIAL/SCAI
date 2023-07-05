@@ -11,17 +11,16 @@
 </head>
 <body>
     <h2>Result</h2>
+    <div>
+        <p>Результат: Мы считаем что у вас @ViewBag.BestClass с вероятностью @ViewBag.BestValue</p>
+    </div>
+    <br/>
 
+    <br />
     <div>
-        <p>Лучшее значение @ViewBag.BestValue</p>
-    </div>
-    <div>
-        <p>Результат @ViewBag.BestClass</p>
-    </div>
-    <div>
-        @foreach (var result in ViewBag.ResultMessage)
+        @foreach (KeyValuePair<string, float> result in ViewBag.ResultMessage)
         {
-            <p>@result</p>
+            <p>@result.Key   @Math.Round(result.Value,3)%</p>
         }
     </div>
 </body>
