@@ -1,3 +1,26 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/SCAI/.vs/ProjectEvaluation/scai.metadata.v7.bin
+/SCAI/.vs/ProjectEvaluation/scai.projects.v7.bin
+/SCAI/.vs/SCAI/DesignTimeBuild/.dtbcache.v2
+/SCAI/.vs/SCAI/FileContentIndex/02c2f183-a2c1-48ca-96ec-434d15478648.vsidx
+/SCAI/.vs/SCAI/FileContentIndex/1a98c8ed-d963-4556-bd1e-b12607f6980f.vsidx
+*.vsidx
+/SCAI/.vs/SCAI/FileContentIndex/730d87d1-6d1f-4bb1-a492-1250094bf261.vsidx
+/SCAI/.vs/SCAI/FileContentIndex/8a8077f7-d56a-4f51-8551-06754c1651f5.vsidx
+/SCAI/.vs/SCAI/FileContentIndex/8f2fb557-bf94-422b-9e39-ca080f92200f.vsidx
+/SCAI/.vs/SCAI/FileContentIndex/ac8e1713-395f-40f9-8e2f-ed7954fe6e51.vsidx
+/SCAI/.vs/SCAI/FileContentIndex/d7a09a7c-94a4-4fb2-8bbe-a948078f12a6.vsidx
+/SCAI/.vs/SCAI/FileContentIndex/f8d0b3ee-13a8-44ad-9918-6cca11680f50.vsidx
+/SCAI/.vs/SCAI/v17/.futdcache.v2
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.assets.cache
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.genruntimeconfig.cache
+/SCAI/SCAI/obj/project.assets.json
+/SCAI/SCAI/obj/project.nuget.cache
+/SCAI/SCAI/obj/SCAI.csproj.nuget.dgspec.json
+/SCAI/SCAI/obj/SCAI.csproj.nuget.g.props
 #ignore folder with compiled and builded files
 bin/
 obj/
@@ -18,15 +41,16 @@ wwwroot/files
 .vs/
 
 #ignore ngrok
-/ngrok.exe
-
-
-/SCAI/SCAI/obj/SCAI.csproj.nuget.g.props
-/SCAI/SCAI/obj/SCAI.csproj.nuget.dgspec.json
-/SCAI/SCAI/obj/project.nuget.cache
-/SCAI/SCAI/obj/project.assets.json
+ngrok.exe
 /SCAI/SCAI/obj/Debug/net7.0/SCAI.GeneratedMSBuildEditorConfig.editorconfig
-/SCAI/SCAI/obj/Debug/net7.0/SCAI.assets.cache
-/SCAI/.vs/SCAI/v17/.futdcache.v2
-/SCAI/.vs/SCAI/DesignTimeBuild/.dtbcache.v2
+/SCAI/SCAI/bin/Debug/net7.0/SCAI.dll
+/SCAI/SCAI/bin/Debug/net7.0/SCAI.pdb
+/SCAI/SCAI/bin/Debug/net7.0/SCAI.staticwebassets.runtime.json
+/SCAI/SCAI/obj/Debug/net7.0/staticwebassets/msbuild.SCAI.Microsoft.AspNetCore.StaticWebAssets.props
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.dll
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.pdb
+/SCAI/.vs/SCAI/config/applicationhost.config
+/SCAI/SCAI/obj/Debug/net7.0/staticwebassets.build.json
+/SCAI/SCAI/obj/Debug/net7.0/staticwebassets.development.json
+/SCAI/SCAI/obj/Debug/net7.0/staticwebassets.pack.json
 /SCAI/.vs/SCAI/v17/.suo
