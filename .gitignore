@@ -29,9 +29,6 @@ out/
 #ignore configuration files and project settings
 *.suo
 *.user
-*.sln.docstates
-*.csproj
-*.csproj.user
 *.vssettings
 
 #ignore uploading files
