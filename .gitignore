@@ -29,9 +29,6 @@ out/
 #ignore configuration files and project settings
 *.suo
 *.user
-*.sln.docstates
-*.csproj
-*.csproj.user
 *.vssettings
 
 #ignore uploading files
@@ -54,5 +51,17 @@ ngrok.exe
 /SCAI/SCAI/obj/Debug/net7.0/staticwebassets.development.json
 /SCAI/SCAI/obj/Debug/net7.0/staticwebassets.pack.json
 /SCAI/.vs/SCAI/v17/.suo
-/SCAI/SCAI.sln
+/SCAI/SCAI/obj/Debug/net7.0/ref/SCAI.dll
+/SCAI/SCAI/obj/Debug/net7.0/refint/SCAI.dll
+/SCAI/SCAI/obj/Debug/net7.0/project.razor.vs.json
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.csproj.CoreCompileInputs.cache
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.csproj.AssemblyReference.cache
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.AssemblyInfo.cs
+/SCAI/SCAI/obj/Debug/net7.0/SCAI.csproj.FileListAbsolute.txt
+/SCAI/SCAI/bin/Debug/net7.0/SCAI.deps.json
+/.vs/SCAI/v17/.wsuo
 /.vs/slnx.sqlite
+/SCAI/SCAI/obj/Release/net7.0/SCAI.assets.cache
+/SCAI/SCAI/obj/Release/net7.0/SCAI.csproj.AssemblyReference.cache
+/SCAI/SCAI/obj/Release/net7.0/SCAI.GeneratedMSBuildEditorConfig.editorconfig
+/.vs/SCAI/FileContentIndex/e31cff1a-8cb6-457f-86f4-a715c727ddb5.vsidx
