@@ -14,12 +14,12 @@
     <None Include="MLModel.consumption.cs">
       <DependentUpon>MLModel.mbconfig</DependentUpon>
     </None>
-    <None Include="MLModel.training.cs">
-      <DependentUpon>MLModel.mbconfig</DependentUpon>
-    </None>
     <None Include="MLModel.mlnet">
       <DependentUpon>MLModel.mbconfig</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MLModel.training.cs">
+      <DependentUpon>MLModel.mbconfig</DependentUpon>
     </None>
   </ItemGroup>
 </Project>

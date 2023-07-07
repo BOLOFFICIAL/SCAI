@@ -1,64 +1,46 @@
-﻿function showPreview(input) {
-    var selectedImageFile; // Переменная для хранения выбранного файла
-    if (input.files && input.files[0]) {
-        selectedImageFile = input.files[0]; // Сохраняем выбранный файл в переменную
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('selectedImage').src = e.target.result;
-        };
-        reader.readAsDataURL(input.files[0]);
-        hideDropZone();
-        showAnalysisButton();
-    }
+﻿function handleDragOver(event) {
+    event.preventDefault();
+    event.stopPropagation();
 }
 
-function cancelSelection() {
-    // Сбросить значение элемента input
-    document.getElementById('imageFile').value = '';
-
-    // Очистить предварительный просмотр картинки
-    document.getElementById('selectedImage').src = '';
-
-    // Показать зону перетаскивания
-    document.querySelector('.drop-zone').style.display = 'block';
-
-    // Очистить переменную с выбранным файлом
-    selectedImageFile = null;
-}
-
-function hideDropZone() {
-    var dropZone = document.querySelector('.drop-zone');
-    dropZone.style.display = 'none';
-}
-
-function showAnalysisButton() {
-    var analysisButton = document.getElementById('analysisButton');
-    analysisButton.style.display = 'inline-block';
+function handleDragLeave(event) {
+    event.preventDefault();
+    event.stopPropagation();
 }
 
 function handleDrop(event) {
     event.preventDefault();
-    var file = event.dataTransfer.files[0];
-    document.getElementById('selectedImage').src = URL.createObjectURL(file);
-    document.getElementById('imageFile').files = event.dataTransfer.files;
-    hideDropZone();
-    showAnalysisButton();
-}
-
-function handleDragOver(event) {
-    event.preventDefault();
     event.stopPropagation();
-    event.currentTarget.classList.add('dragover');
+    var file = event.dataTransfer.files[0];
+    var imageFileInput = document.getElementById('imageFile');
+    imageFileInput.files = event.dataTransfer.files;
+
+    showPreview(imageFileInput);
+    submitForm();
 }
 
-function handleDragLeave(event) {
-    event.currentTarget.classList.remove('dragover');
+function showPreview(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var selectedImage = document.getElementById('selectedImage');
+            selectedImage.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
 }
 
 function triggerFileInput() {
-    document.getElementById('imageFile').click();
+    var imageFileInput = document.getElementById('imageFile');
+    imageFileInput.click();
 }
 
-function handleImageDragLeave(event) {
-    event.currentTarget.classList.remove('dragover');
+function submitForm() {
+    var form = document.getElementById('myForm');
+    form.submit();
+}
+
+function hideDropZone() {
+    var dropZone = document.getElementById('dropZone');
+    dropZone.style.display = 'none';
 }

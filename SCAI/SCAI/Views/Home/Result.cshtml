@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Result";
+    ViewData["Title"] = "Результат анализа";
 }
 
 <!DOCTYPE html>
@@ -10,18 +10,36 @@
     <script src="~/js/site.js"></script>
 </head>
 <body>
-    <h2>Result</h2>
+    <h1>Результат анализа</h1>
     <div>
-        <p>Результат: Мы считаем что у вас @ViewBag.BestClass с вероятностью @ViewBag.BestValue</p>
+        <h6>С вероятностью @ViewBag.BestValue можем сделать вывод что у вас @ViewBag.BestClass</h6>
+        <img src=@ViewBag.Img alt="Изображение результата" class="ResultImg"/>
     </div>
-    <br/>
-
     <br />
+    <h4>Подробнее о диагнозе:</h4>
     <div>
-        @foreach (KeyValuePair<string, float> result in ViewBag.ResultMessage)
-        {
-            <p>@result.Key   @Math.Round(result.Value,3)%</p>
-        }
+        <p>
+            @ViewBag.About
+        </p>
     </div>
+    <h4>Вероятность других заболеваний:</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Диагноз</th>
+                <th class="probability">Вероятность</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (KeyValuePair<string, float> result in ViewBag.ResultMessage)
+            {
+                <tr>
+                    <td>@result.Key</td>
+                    <td class="probability">@Math.Round(result.Value, 3)%</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </body>
 </html>

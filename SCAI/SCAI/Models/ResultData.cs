@@ -9,6 +9,7 @@ namespace SCAI.Models
     {
         public float BestValue { get; set; }
         public string BestClass { get; set; }
+        public string AboutCancer { get; set; }
         public Dictionary<string, float> AllResults { get; set; }
 
         public ResultData(Dictionary<string,float> results) 
@@ -19,11 +20,12 @@ namespace SCAI.Models
 
                 foreach (var item in results) 
                 {
-                    AllResults.Add(SkinCancers.GetCancer(item.Key), item.Value);
+                    AllResults.Add(SkinCancers.GetCancer(item.Key), item.Value*100); 
                 }
                 var max = AllResults.OrderByDescending(x => x.Value).First();
                 BestValue = max.Value;
                 BestClass = max.Key;
+                AboutCancer = SkinCancers.GetAboutCancer(BestClass);
                 AllResults.Remove(BestClass);
             }
         }

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Image Upload";
+    ViewData["Title"] = "Анализ фотографии";
 }
 
 <!DOCTYPE html>
@@ -10,22 +10,23 @@
     <script src="~/js/site.js"></script>
 </head>
 <body>
-    <h3>Image Upload</h3>
-    <form method="post" enctype="multipart/form-data">
+    <h1>Анализ фотографии</h1>
+    <div class="mainText">
+        Выберите фотографию анализ для которой хотите сделать.
+    </div>
+    <form method="post" enctype="multipart/form-data" id="myForm">
         <div class="center-align">
             <label for="imageFile">
                 <div id="dropZone" class="drop-zone" ondragover="handleDragOver(event);" ondragleave="handleDragLeave(event);" ondrop="handleDrop(event);">
                     +
                 </div>
-                <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="showPreview(this);" />
+                <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="showPreview(this); hideDropZone(); submitForm();" />
             </label>
             <br />
-            <img id="selectedImage" class="img" onclick="triggerFileInput()"
-                 ondragover="handleDragOver(event);" ondragleave="handleDragLeave(event);" ondrop="handleDrop(event);" />
+            <img id="selectedImage" class="img" onclick="triggerFileInput()" />
             <br />
-            <input type="submit" value="Анализ" id="analysisButton" class="submit-button" style="display: none;" />
+            <input type="text" value="Анализ" id="analysisButton" class="submit-button" style="display: none;" onclick="submitForm();" />
         </div>
     </form>
-
 </body>
 </html>
