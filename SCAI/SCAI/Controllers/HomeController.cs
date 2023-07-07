@@ -25,8 +25,9 @@ namespace SCAI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(IFormFile imageFile)
+        public async Task<IActionResult> Index(IFormFile imageFile)
         {
+            await Task.Delay(1);
             if (imageFile != null && imageFile.Length > 0)
             {
                 try
