@@ -66,3 +66,4 @@ ngrok.exe
 /SCAI/SCAI/obj/Release/net7.0/SCAI.GeneratedMSBuildEditorConfig.editorconfig
 /.vs/SCAI/FileContentIndex/e31cff1a-8cb6-457f-86f4-a715c727ddb5.vsidx
 /.vs/VSWorkspaceState.json
+/SCAI/SCAI/wwwroot/files
