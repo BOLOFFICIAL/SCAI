@@ -3,16 +3,17 @@
     ViewData["Title"] = "Error";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">SCAI Error.</h1>
+<h2 class="text-danger">Произошла ошибка</h2>
 
 @if (Model.ShowRequestId)
 {
     <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        <strong>ID запроса:</strong> <code>@Model.RequestId</code>
     </p>
 }
-
+<br/>
+<h4>Содержание ошибки</h4>
 <p>
     @ViewBag.Error
 </p>
