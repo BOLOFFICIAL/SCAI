@@ -89,12 +89,12 @@ td.probability {
 }
 
 .spinner {
-    border: 16px solid #f3f3f3; /* Light gray border */
-    border-top: 16px solid #2158b8; /* Blue border */
+    border: 17px solid white; /* Light gray border */
+    border-top: 17px dotted #2158b8; /* Blue border */
     border-radius: 50%;
     width: 80px;
     height: 80px;
-    animation: spin 2s linear infinite;
+    animation: spin 1s linear infinite;
     margin: 0 auto;
 }
 
