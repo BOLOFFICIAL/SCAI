@@ -1,4 +1,6 @@
-﻿function handleDragOver(event) {
+﻿var spinner = document.getElementById('spinner');
+
+function handleDragOver(event) {
     event.preventDefault();
     event.stopPropagation();
 }
@@ -36,6 +38,9 @@ function triggerFileInput() {
 }
 
 function submitForm() {
+    // Show the spinner before submitting the form
+    spinner.style.display = 'block';
+
     var form = document.getElementById('myForm');
     form.submit();
 }

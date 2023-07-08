@@ -26,7 +26,12 @@
                 <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="showPreview(this); hideDropZone(); submitForm();" />
             </label>
             <br />
-            <img id="selectedImage" class="img" onclick="triggerFileInput()" />
+            <div style="position: relative; display: inline-block;">
+                <img id="selectedImage" class="img" onclick="triggerFileInput()">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px;">
+                    <div id="spinner" class="spinner" style="display: none;"></div>
+                </div>
+            </div>
         </div>
     </form>
 </body>
