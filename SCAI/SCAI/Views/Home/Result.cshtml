@@ -11,19 +11,20 @@
 </head>
 <body>
     <h1>Результат анализа</h1>
+    <br />
     <div>
-        <h6>С вероятностью @ViewBag.BestValue можем сделать вывод что у вас @ViewBag.BestClass</h6>
-        <img src=@ViewBag.Img alt="Изображение результата" class="ResultImg"/>
+        <h6 style="text-indent: 25px;">С вероятностью <strong>@ViewBag.BestValue</strong> можем сделать вывод что у вас <strong>@ViewBag.BestClass</strong></h6>
+        <img src=@ViewBag.Img alt="Не удалось оторазить картинку" class="ResultImg" width="500"/>
     </div>
     <br />
-    <h4>Подробнее о диагнозе:</h4>
+    <h4><strong>Подробнее о диагнозе:</strong></h4>
     <div>
-        <p>
+        <p style="text-indent: 25px;">
             @ViewBag.About
         </p>
     </div>
     <br />
-    <h4>Вероятность других диагнозов:</h4>
+    <h4><strong>Вероятность других диагнозов:</strong></h4>
     <table>
         <thead>
             <tr>

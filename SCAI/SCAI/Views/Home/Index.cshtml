@@ -23,11 +23,11 @@
                 <div id="dropZone" class="drop-zone" ondragover="handleDragOver(event);" ondragleave="handleDragLeave(event);" ondrop="handleDrop(event);">
                     +
                 </div>
-                <input type="file" id="imageFile" name="imageFile" accept="image/*" style="display: none;" onchange="showPreview(this); hideDropZone(); submitForm();" />
+                <input type="file" id="imageFile" name="imageFile" accept="image/jpeg, image/png, image/jpg, image/svg" style="display: none;" onchange="showPreview(this); hideDropZone(); submitForm();" />
             </label>
             <br />
             <div style="position: relative; display: inline-block;">
-                <img id="selectedImage" class="img" onclick="triggerFileInput()">
+                <img id="selectedImage" class="img" onclick="triggerFileInput()" width="500">
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px;">
                     <div id="spinner" class="spinner" style="display: none;"></div>
                 </div>
