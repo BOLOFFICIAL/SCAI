@@ -8,13 +8,13 @@ public class MlAnalis
 {
     private static void Main(string[] args)
     {
-        string path = @"C:\Users\Bolofficial\Desktop\РАКИ\akiec\ISIC_0024329.jpg";
+        string path = "";
         Analise(path);
     }
 
-    public static Dictionary<string,float> Analise(string puth) 
+    public static Dictionary<string, float> Analise(string imagePath) 
     {
-        var imageBytes = File.ReadAllBytes(puth);
+        var imageBytes = File.ReadAllBytes(imagePath);
         MLModel.ModelInput sampleData = new MLModel.ModelInput()
         {
             ImageSource = imageBytes,
