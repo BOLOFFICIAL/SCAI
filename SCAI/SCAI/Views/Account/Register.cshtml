@@ -1,0 +1,62 @@
+﻿@model SCAI.Models.Tables.Doctor
+
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DoctorsLastName)
+        @Html.TextBoxFor(m => m.DoctorsLastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DoctorsLastName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DoctorsFirstName)
+        @Html.TextBoxFor(m => m.DoctorsFirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DoctorsFirstName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DoctorsMiddleName)
+        @Html.TextBoxFor(m => m.DoctorsMiddleName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DoctorsMiddleName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DoctorsPhoto)
+        @Html.TextBoxFor(m => m.DoctorsPhoto, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DoctorsPhoto)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.JobPosition)
+        @Html.TextBoxFor(m => m.JobPosition, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.JobPosition)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Username)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserPassword)
+        @Html.PasswordFor(m => m.UserPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserPassword)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword)
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+}

@@ -28,3 +28,5 @@ public class MlAnalis
         return result;
     }
 }
+// Scaffold-DbContext "Host=localhost;Port=5432;Database=SCAI_DB;Username=postgres;Password=123321" Npgsql.EntityFrameworkCore.PostgreSQL
+// Npgsql.EntityFrameworkCore.PostgreSQL
