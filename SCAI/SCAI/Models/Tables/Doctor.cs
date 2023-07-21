@@ -31,10 +31,10 @@ public partial class Doctor
     public string Username { get; set; } = null!;
 
     [Required(ErrorMessage = "Пожалуйста, введите пароль")]
-    [StringLength(60, MinimumLength = 6, ErrorMessage = "Пароль должен содержать от 6 до 60 символов")]
+    [StringLength(16, MinimumLength = 6,  ErrorMessage = "Пароль должен содержать от 6 до 16 символов")]
     public string UserPassword { get; set; } = null!;
 
-    [Required]
+    [Required(ErrorMessage = "Пожалуйста, введите логин")]
     [DataType(DataType.Password)]
     [NotMapped]
     [Compare("UserPassword", ErrorMessage ="Пароли не совпадают")]
