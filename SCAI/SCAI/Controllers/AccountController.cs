@@ -1,51 +1,49 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Web;
+﻿using Microsoft.AspNetCore.Mvc;
 using SCAI.Models.Tables;
 
 namespace SCAI.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<Doctor> _userManager;
-        private readonly SignInManager<Doctor> _signInManager;
-
-        public AccountController(UserManager<Doctor> userManager, SignInManager<Doctor> signInManager)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-        }
-
         [HttpGet]
-        public ActionResult Register()
+        public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(Doctor model)
-        {
-            if (ModelState.IsValid)
+        public ActionResult Register(Doctor model) 
+        { 
+            if (ModelState.IsValid) 
             {
-                Doctor doctor = new Doctor
+                try
                 {
-                    DoctorsFirstName = model.DoctorsFirstName,
-                    DoctorsLastName = model.DoctorsLastName,
-                    DoctorsMiddleName = model.DoctorsMiddleName,
-                    DoctorsPhoto = model.DoctorsPhoto,
-                    JobPosition = model.JobPosition,
-                    Username = model.Username,
-                    UserPassword = model.UserPassword
-                };
-                IdentityResult result = await _userManager.CreateAsync(doctor, model.UserPassword);
+                    using (var dbContext = new ScaiDbContext())
+                    {
+                        // Создаем объект Doctor на основе данных из модели RegistrationViewModel
+                        Doctor newDoctor = new Doctor
+                        {
+                            DoctorsLastName = model.DoctorsLastName,
+                            DoctorsFirstName = model.DoctorsFirstName,
+                            DoctorsMiddleName = model.DoctorsMiddleName,
+                            DoctorsPhoto = model.DoctorsPhoto,
+                            JobPosition = model.JobPosition,
+                            Username = model.Username,
+                            UserPassword = model.UserPassword // В реальном приложении следует хешировать пароль перед сохранением
+                        };
 
-                foreach (var error in result.Errors)
+                        // Добавляем объект Doctor в контекст базы данных и сохраняем изменения
+                        dbContext.Doctors.Add(newDoctor);
+                        dbContext.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError("", ex.Message);
                 }
             }
-            return View(model);
+            return View();
         }
     }
 }
