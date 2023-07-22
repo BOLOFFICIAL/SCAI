@@ -5,9 +5,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Owin" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.ML" Version="2.0.0" />
     <PackageReference Include="Microsoft.ML.Vision" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
     <PackageReference Include="SciSharp.TensorFlow.Redist" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
@@ -25,5 +33,11 @@
     <None Include="MLModel.training.cs">
       <DependentUpon>MLModel.mbconfig</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Views\Account\Login.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ namespace SCAI.Controllers
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ILogger<HomeController> _logger;
-        private ResultData _result;
+        //private ResultData _result;
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
         {
@@ -34,7 +34,7 @@ namespace SCAI.Controllers
                 {
                     if (ValidationFile(imageFile.FileName))
                     {
-                        throw new Exception("Фаил не является картинкой");
+                        throw new Exception("Файл не является картинкой");
                     }
                     var analise = new Analise();
                     var uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
