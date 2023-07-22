@@ -22,7 +22,7 @@ namespace SCAI.Controllers
         // Регистрация
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(Doctor model) 
+        public ActionResult Registration(DoctorRegistration model) 
         { 
             if (ModelState.IsValid) 
             {
@@ -66,7 +66,7 @@ namespace SCAI.Controllers
         // Логин
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(Doctor model)
+        public IActionResult Login(DoctorLogin model)
         {
             if (ModelState.IsValid)
             {
@@ -91,9 +91,7 @@ namespace SCAI.Controllers
                                 //return RedirectToAction("LoginConfirmation");
                             }
                         }
-
-                        // Пользователь не найден или пароль неверный - отображаем сообщение об ошибке
-                        ModelState.AddModelError("", "Неверный логин или пароль.");
+                        else ModelState.AddModelError("", "Неверный логин или пароль."); // Пользователь не найден или пароль неверный - отображаем сообщение об ошибке
                     }
                 }
                 catch (Exception ex)
