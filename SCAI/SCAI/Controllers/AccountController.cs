@@ -8,14 +8,21 @@ namespace SCAI.Controllers
     public class AccountController : Controller
     {
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Registration()
         {
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // Регистрация
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(Doctor model) 
+        public ActionResult Registration(Doctor model) 
         { 
             if (ModelState.IsValid) 
             {
@@ -45,12 +52,56 @@ namespace SCAI.Controllers
                         dbContext.Doctors.Add(newDoctor);
                         dbContext.SaveChanges();
                     }
+                    TempData["RegistrationMessage"] = "Регистрация прошла успешно! Теперь вы можете войти в свою учетную запись.";
+                    //return RedirectToAction("RegistrationConfirmation");
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                 }
             }
+            return View();
+        }
+
+        // Логин
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(Doctor model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var dbContext = new ScaiDbContext())
+                    {
+                        // Ищем пользователя по логину
+                        var doctor = dbContext.Doctors.FirstOrDefault(d => d.Username == model.Username);
+                        if (doctor != null)
+                        {
+                            // Хешируем введенный пользователем пароль
+                            string hashedPassword = HashPassword(model.UserPassword);
+
+                            // Сравниваем хешированный пароль из базы данных с хеш-значением введенного пароля
+                            if (doctor.UserPassword == hashedPassword)
+                            {
+                                // Пароль верный - выполните необходимые действия для аутентификации пользователя
+                                // Например, установите куки аутентификации или идентификацию пользователя в вашем приложении.
+                                // В этом примере мы просто перенаправляем пользователя на страницу подтверждения входа.
+                                TempData["LoginMessage"] = "Вход прошел успешно!";
+                                //return RedirectToAction("LoginConfirmation");
+                            }
+                        }
+
+                        // Пользователь не найден или пароль неверный - отображаем сообщение об ошибке
+                        ModelState.AddModelError("", "Неверный логин или пароль.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Произошла ошибка при попытке входа. Пожалуйста, попробуйте еще раз.");
+                }
+            }
+            // Возвращаем представление с сообщением об ошибке
             return View();
         }
 
