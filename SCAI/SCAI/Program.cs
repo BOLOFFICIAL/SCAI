@@ -1,9 +1,20 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using SCAI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.LoginPath = "/Account/Login"; // URL страницы входа логина
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        });
+
+builder.Services.AddDbContext<ScaiDbContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,8 +32,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseAuthentication();
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();
+

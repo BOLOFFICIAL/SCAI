@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SCAI.Models;
 using Skin_Cancer;
@@ -6,6 +9,7 @@ using System.Diagnostics;
 
 namespace SCAI.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -22,6 +26,14 @@ namespace SCAI.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]

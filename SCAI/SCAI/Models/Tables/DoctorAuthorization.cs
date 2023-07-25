@@ -34,7 +34,7 @@ public class DoctorRegistration
     [StringLength(16, MinimumLength = 6, ErrorMessage = "Пароль должен содержать от 6 до 16 символов")]
     public string UserPassword { get; set; } = null!;
 
-    [Required(ErrorMessage = "Пожалуйста, введите логин")]
+    [Required(ErrorMessage = "Пожалуйста, подтвердите пароль")]
     [DataType(DataType.Password)]
     [NotMapped]
     [Compare("UserPassword", ErrorMessage = "Пароли не совпадают")]
