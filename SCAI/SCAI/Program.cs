@@ -5,13 +5,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//builder.Services.AddSession();
+/*builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddCookie(options =>
         {
             options.LoginPath = "/Account/Login"; // URL страницы входа логина
             options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-        });
+        });*/
 
 builder.Services.AddDbContext<ScaiDbContext>();
 
@@ -32,11 +32,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.UseAuthentication();
+//app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
 
