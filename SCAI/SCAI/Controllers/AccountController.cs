@@ -51,7 +51,7 @@ namespace SCAI.Controllers
                             ModelState.AddModelError("Username", "Логин уже используется. Пожалуйста, выберите другой логин.");
                             return View(model); // Возвращаем представление с ошибкой
                         }
-                        // Создаем объект Doctor на основе данных из модели RegistrationViewModel
+                        // Создаем объект Doctor на основе данных из модели Registration
                         Doctor newDoctor = new Doctor
                         {
                             DoctorsLastName = model.DoctorsLastName,

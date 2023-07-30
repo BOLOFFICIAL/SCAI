@@ -6,10 +6,11 @@ using Newtonsoft.Json;
 using SCAI.Models;
 using Skin_Cancer;
 using System.Diagnostics;
+using SCAI.Models.Tables;
 
 namespace SCAI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -92,6 +93,7 @@ namespace SCAI.Controllers
                 ViewBag.BestClass = result.BestClass;
                 ViewBag.About = result.AboutCancer;
                 ViewBag.ResultMessage = result.AllResults;
+                
                 return View();
             } 
             catch 
@@ -100,6 +102,53 @@ namespace SCAI.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult SaveResult()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SaveResult(Patient patientModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var dbContext = new ScaiDbContext())
+                    {
+                        Patient newPatient = new Patient
+                        {
+                            PatientsFirstName = patientModel.PatientsFirstName,
+                            PatientsLastName = patientModel.PatientsLastName,
+                            PatientsMiddleName = patientModel.PatientsMiddleName,
+                            PatientsPhoto = patientModel.PatientsPhoto,
+                            PassportData = patientModel.PassportData,
+                            Age = patientModel.Age,
+                            Gender = patientModel.Gender
+                        };
+                        dbContext.Patients.Add(newPatient);
+
+                        /*Result newResult = new Result
+                        {
+                            FkPatientId = patientModel.PatientsId,
+                            SkinPhoto = ViewBag.Img,
+                            Description = ViewBag.About,
+                            Diagnosis = ViewBag.BestClass
+                        };
+                        dbContext.Results.Add(newResult);*/
+                        dbContext.SaveChanges();
+                    }
+                    return View();
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            return View();
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

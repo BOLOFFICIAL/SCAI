@@ -1,0 +1,55 @@
+﻿@model SCAI.Models.Tables.Patient;
+@using SCAI.Models.Tables
+
+@{
+    ViewData["Title"] = "Сохранение результатов";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/site.js"></script>
+</head>
+<body>
+    <h1>Сохранение</h1>
+    <br />
+    <div style="float: left; width: 300px; margin-right: 20px;">
+            <h4><strong>Введите данные:</strong></h4>
+            <form method="post" action="@Url.Action("SaveResult", "Home")">
+                <div>
+                    <label asp-for="PatientsLastName">Фамилия пациента:</label>
+                    <input asp-for="PatientsLastName" required />
+                </div>
+                <div>
+                    <label asp-for="PatientsFirstName">Имя пациента:</label>
+                    <input asp-for="PatientsFirstName" required />
+                </div>
+                <div>
+                    <label asp-for="PatientsMiddleName">Отчество пациента:</label>
+                    <input asp-for="PatientsMiddleName" />
+                </div>
+                <div>
+                    <label asp-for="PatientsPhoto">Фото пациента:</label>
+                    <input asp-for="PatientsPhoto" />
+                </div>
+                <div>
+                    <label asp-for="PassportData">Паспортные данные пациента:</label>
+                    <input asp-for="PassportData" required />
+                </div>
+                <div>
+                    <label asp-for="Age">Возраст пациента:</label>
+                    <input asp-for="Age" required />
+                </div>
+                <div>
+                    <label asp-for="Gender">Пол пациента:</label>
+                    <input asp-for="Gender" required />
+                </div>
+                <div>
+                <input type="submit" value="Отправить" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+</body>
+</html>
