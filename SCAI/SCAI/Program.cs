@@ -6,12 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //builder.Services.AddSession();
-/*builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddCookie(options =>
         {
             options.LoginPath = "/Account/Login"; // URL страницы входа логина
             options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-        });*/
+        });
 
 builder.Services.AddDbContext<ScaiDbContext>();
 

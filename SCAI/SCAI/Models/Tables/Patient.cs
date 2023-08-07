@@ -23,7 +23,6 @@ public partial class Patient
 
     public string Gender { get; set; } = null!;
     
-
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
     public virtual ICollection<Result> Results { get; set; } = new List<Result>();

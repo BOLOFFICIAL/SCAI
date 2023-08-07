@@ -49,6 +49,7 @@ public partial class ScaiDbContext : DbContext
             entity.Property(e => e.AppointmentsId)
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("appointments_id");
+            entity.Property(e => e.DoctorComment).HasColumnName("doctor_comment");
             entity.Property(e => e.FkDoctorId).HasColumnName("fk_doctor_id");
             entity.Property(e => e.FkPatientId).HasColumnName("fk_patient_id");
             entity.Property(e => e.FkResultId).HasColumnName("fk_result_id");
@@ -149,10 +150,10 @@ public partial class ScaiDbContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("skin_photo");
 
-            entity.HasOne(d => d.FkPatient).WithMany(p => p.Results)
+            /*entity.HasOne(d => d.FkPatient).WithMany(p => p.Results)
                 .HasForeignKey(d => d.FkPatientId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("results_fk_patient_id_fkey");
+                .HasConstraintName("results_fk_patient_id_fkey");*/
         });
 
         OnModelCreatingPartial(modelBuilder);

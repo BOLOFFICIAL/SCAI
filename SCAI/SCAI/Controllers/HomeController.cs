@@ -10,7 +10,7 @@ using SCAI.Models.Tables;
 
 namespace SCAI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -29,9 +29,13 @@ namespace SCAI.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogOut()
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
@@ -78,11 +82,6 @@ namespace SCAI.Controllers
             }
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public IActionResult Result()
         {
             try
@@ -103,13 +102,14 @@ namespace SCAI.Controllers
         }
 
         [HttpGet]
-        public IActionResult SaveResult()
+        public IActionResult PatientAdd(string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public IActionResult SaveResult(Patient patientModel)
+        public IActionResult PatientAdd(Patient patientModel, string returnUrl = null)
         {
             if (ModelState.IsValid)
             {
@@ -149,6 +149,47 @@ namespace SCAI.Controllers
             return View();
 
         }
+
+        /*[HttpPost]
+        public IActionResult AppointmentAdd(Patient patientModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var dbContext = new ScaiDbContext())
+                    {
+                        Patient newPatient = new Patient
+                        {
+                            PatientsFirstName = patientModel.PatientsFirstName,
+                            PatientsLastName = patientModel.PatientsLastName,
+                            PatientsMiddleName = patientModel.PatientsMiddleName,
+                            PatientsPhoto = patientModel.PatientsPhoto,
+                            PassportData = patientModel.PassportData,
+                            Age = patientModel.Age,
+                            Gender = patientModel.Gender
+                        };
+                        dbContext.Patients.Add(newPatient);
+
+                        *//*Result newResult = new Result
+                        {
+                            FkPatientId = patientModel.PatientsId,
+                            SkinPhoto = ViewBag.Img,
+                            Description = ViewBag.About,
+                            Diagnosis = ViewBag.BestClass
+                        };
+                        dbContext.Results.Add(newResult);*//*
+                        dbContext.SaveChanges();
+                    }
+                    return View();
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            return View();
+        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

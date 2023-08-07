@@ -49,3 +49,7 @@ function hideDropZone() {
     var dropZone = document.getElementById('dropZone');
     dropZone.style.display = 'none';
 }
+
+function goBack() {
+    window.history.back();
+}
