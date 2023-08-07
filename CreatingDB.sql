@@ -28,7 +28,6 @@ CREATE TABLE Patients (
 -- Создание таблицы "Results" с результатами из нейросети
 CREATE TABLE Results (
     results_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    fk_patient_id INTEGER REFERENCES Patients(patients_id) NOT NULL,
     skin_photo VARCHAR(255), -- Путь к фото с кожей
     diagnosis VARCHAR(50) NOT NULL,
     description TEXT NOT NULL
@@ -37,9 +36,11 @@ CREATE TABLE Results (
 -- Создание таблицы "Appointments" с обращениями к врачу
 CREATE TABLE Appointments (
     Appointments_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+	doctor_comment TEXT, -- Поле для комментария доктора
     fk_doctor_id INTEGER REFERENCES Doctors(doctors_id) NOT NULL,
     fk_patient_id INTEGER REFERENCES Patients(patients_id) NOT NULL,
     fk_result_id INTEGER REFERENCES Results(results_id) NOT NULL
+	
 );
 
 /*
@@ -53,4 +54,4 @@ CREATE TABLE Appointments (
 VALUES ('Tester', 'Test', 'Testing', 'none', 'Врач', 'doctor1', '123321')*/
 
 -- Выборка из Врачи
-SELECT * FROM Doctors
+SELECT * FROM Patients
