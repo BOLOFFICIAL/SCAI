@@ -2,7 +2,8 @@
 @using SCAI.Models.Tables
 
 @{
-    ViewData["Title"] = "Сохранение результатов";
+    ViewData["Title"] = "Добавление нового пациента";
+    var returnUrl = ViewData["ReturnUrl"] as string;
 }
 
 <!DOCTYPE html>
@@ -13,11 +14,15 @@
     <script src="~/js/site.js"></script>
 </head>
 <body>
-    <h1>Сохранение</h1>
+    <h1>Добавление нового пациента</h1>
     <br />
     <div style="float: left; width: 300px; margin-right: 20px;">
-            <h4><strong>Введите данные:</strong></h4>
-            <form method="post" action="@Url.Action("SaveResult", "Home")">
+            <h4><strong>Введите данные пациента:</strong></h4>
+            <form method="post" action="@Url.Action("PatientAdd", "Home")">
+                @if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    <input type="hidden" name="returnUrl" value="@returnUrl" />
+                }
                 <div>
                     <label asp-for="PatientsLastName">Фамилия пациента:</label>
                     <input asp-for="PatientsLastName" required />
@@ -48,6 +53,10 @@
                 </div>
                 <div>
                 <input type="submit" value="Отправить" class="btn btn-primary" />
+                </div>
+
+                <div>
+                    <input type="button" value="Назад" class="btn btn-secondary" onclick="goBack()" />
                 </div>
             </form>
         </div>

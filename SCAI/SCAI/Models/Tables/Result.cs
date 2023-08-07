@@ -16,6 +16,4 @@ public partial class Result
     public string Description { get; set; } = null!;
 
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
-
-    public virtual Patient FkPatient { get; set; } = null!;
 }

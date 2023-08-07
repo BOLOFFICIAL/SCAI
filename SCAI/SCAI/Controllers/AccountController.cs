@@ -24,11 +24,9 @@ namespace SCAI.Controllers
         public IActionResult Login()
         {
             ClaimsPrincipal claimsUser = HttpContext.User;
-            //if(claimsUser.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
+            if(claimsUser.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
             return View();
         }
-
-        
 
         /// <summary>
         /// Метод для регистрации в системе - в БД
@@ -117,7 +115,8 @@ namespace SCAI.Controllers
 
                                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
                                 //TempData["LoginMessage"] = "Вход прошел успешно!";
-                                return RedirectToAction("Index", "Home");
+                                /*if(returnUrl != null) return LocalRedirect(returnUrl);
+                                else */return RedirectToAction("Index", "Home");
                             }
                         }
                     }
