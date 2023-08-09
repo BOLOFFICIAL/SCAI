@@ -82,23 +82,39 @@ namespace SCAI.Controllers
             }
         }
 
-        public IActionResult Result()
+        public IActionResult Result(Result resultModel)
         {
-            try
+            if (ModelState.IsValid) 
             {
-                ViewBag.Img = TempData["Img"] as string;
-                var result = JsonConvert.DeserializeObject<ResultData>(TempData["Result"] as string);
-                ViewBag.BestValue = Math.Round(result.BestValue, 3).ToString() + "%";
-                ViewBag.BestClass = result.BestClass;
-                ViewBag.About = result.AboutCancer;
-                ViewBag.ResultMessage = result.AllResults;
-                
+                try
+                {
+                    ViewBag.Img = TempData["Img"] as string;
+                    var result = JsonConvert.DeserializeObject<ResultData>(TempData["Result"] as string);
+                    ViewBag.BestValue = Math.Round(result.BestValue, 3).ToString() + "%";
+                    ViewBag.BestClass = result.BestClass;
+                    ViewBag.About = result.AboutCancer;
+                    ViewBag.ResultMessage = result.AllResults;
+
+                    using (var dbContext = new ScaiDbContext()) 
+                    {
+                        Result newResult = new Result
+                        {
+                            SkinPhoto = ViewBag.Img,
+                            Description = ViewBag.About,
+                            Diagnosis = ViewBag.BestClass
+                        };
+                        dbContext.Results.Add(newResult);
+                        dbContext.SaveChanges();
+                    }
+                }
+                catch
+                {
+                    return RedirectPermanent("~/Home/Index");
+                }
                 return View();
-            } 
-            catch 
-            {
-                return RedirectPermanent("~/Home/Index");
             }
+            ModelState.AddModelError("", "Произошла ошибка с добавлением данных"); // Пользователь не найден или пароль неверный - отображаем сообщение об ошибке
+            return View();
         }
 
         [HttpGet]

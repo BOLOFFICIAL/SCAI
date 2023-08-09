@@ -145,7 +145,7 @@ public partial class ScaiDbContext : DbContext
             entity.Property(e => e.Diagnosis)
                 .HasMaxLength(50)
                 .HasColumnName("diagnosis");
-            entity.Property(e => e.FkPatientId).HasColumnName("fk_patient_id");
+            //entity.Property(e => e.FkPatientId).HasColumnName("fk_patient_id");
             entity.Property(e => e.SkinPhoto)
                 .HasMaxLength(255)
                 .HasColumnName("skin_photo");
