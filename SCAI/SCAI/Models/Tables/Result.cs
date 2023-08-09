@@ -7,8 +7,6 @@ public partial class Result
 {
     public int ResultsId { get; set; }
 
-    public int FkPatientId { get; set; }
-
     public string? SkinPhoto { get; set; }
 
     public string Diagnosis { get; set; } = null!;

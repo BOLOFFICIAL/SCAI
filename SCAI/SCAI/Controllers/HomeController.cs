@@ -84,37 +84,46 @@ namespace SCAI.Controllers
 
         public IActionResult Result(Result resultModel)
         {
-            if (ModelState.IsValid) 
+            try
             {
-                try
-                {
-                    ViewBag.Img = TempData["Img"] as string;
-                    var result = JsonConvert.DeserializeObject<ResultData>(TempData["Result"] as string);
-                    ViewBag.BestValue = Math.Round(result.BestValue, 3).ToString() + "%";
-                    ViewBag.BestClass = result.BestClass;
-                    ViewBag.About = result.AboutCancer;
-                    ViewBag.ResultMessage = result.AllResults;
+                ViewBag.Img = TempData["Img"] as string;
+                var result = JsonConvert.DeserializeObject<ResultData>(TempData["Result"] as string);
+                ViewBag.BestValue = Math.Round(result.BestValue, 3).ToString() + "%";
+                ViewBag.BestClass = result.BestClass;
+                ViewBag.About = result.AboutCancer;
+                ViewBag.ResultMessage = result.AllResults;
 
-                    using (var dbContext = new ScaiDbContext()) 
-                    {
-                        Result newResult = new Result
-                        {
-                            SkinPhoto = ViewBag.Img,
-                            Description = ViewBag.About,
-                            Diagnosis = ViewBag.BestClass
-                        };
-                        dbContext.Results.Add(newResult);
-                        dbContext.SaveChanges();
-                    }
-                }
-                catch
+                using (var dbContext = new ScaiDbContext())
                 {
-                    return RedirectPermanent("~/Home/Index");
+                    Result newResult = new Result
+                    {
+                        SkinPhoto = ViewBag.Img,
+                        Diagnosis = ViewBag.BestClass,
+                        Description = ViewBag.About
+                    };
+                    dbContext.Results.Add(newResult);
+                    dbContext.SaveChanges();
                 }
                 return View();
             }
-            ModelState.AddModelError("", "Произошла ошибка с добавлением данных"); // Пользователь не найден или пароль неверный - отображаем сообщение об ошибке
-            return View();
+            catch
+            {
+                return RedirectPermanent("~/Home/Index");
+            }
+
+            /*{
+                try
+                {
+                    
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("", "Произошла ошибка с добавлением данных");
+                }
+                return View();
+            }
+            ModelState.AddModelError("", "Произошла ошибка с добавлением данных");*/
+            
         }
 
         [HttpGet]
@@ -144,15 +153,6 @@ namespace SCAI.Controllers
                             Gender = patientModel.Gender
                         };
                         dbContext.Patients.Add(newPatient);
-
-                        /*Result newResult = new Result
-                        {
-                            FkPatientId = patientModel.PatientsId,
-                            SkinPhoto = ViewBag.Img,
-                            Description = ViewBag.About,
-                            Diagnosis = ViewBag.BestClass
-                        };
-                        dbContext.Results.Add(newResult);*/
                         dbContext.SaveChanges();
                     }
                     return View();
