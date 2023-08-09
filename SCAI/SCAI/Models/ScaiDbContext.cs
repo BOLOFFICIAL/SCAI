@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using SCAI.Models.Tables;
 
-namespace SCAI;
+namespace SCAI.Models;
 
 public partial class ScaiDbContext : DbContext
 {
@@ -24,10 +24,10 @@ public partial class ScaiDbContext : DbContext
 
     public virtual DbSet<Result> Results { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (!optionsBuilder.IsConfigured) 
-        { 
+        if (!optionsBuilder.IsConfigured)
+        {
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
@@ -76,6 +76,8 @@ public partial class ScaiDbContext : DbContext
 
             entity.ToTable("doctors");
 
+            entity.HasIndex(e => e.Username, "doctors_username_key").IsUnique();
+
             entity.Property(e => e.DoctorsId)
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("doctors_id");
@@ -95,7 +97,7 @@ public partial class ScaiDbContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("job_position");
             entity.Property(e => e.UserPassword)
-                .HasMaxLength(100)
+                .HasMaxLength(255)
                 .HasColumnName("user_password");
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
@@ -143,17 +145,11 @@ public partial class ScaiDbContext : DbContext
                 .HasColumnName("results_id");
             entity.Property(e => e.Description).HasColumnName("description");
             entity.Property(e => e.Diagnosis)
-                .HasMaxLength(50)
+                .HasMaxLength(255)
                 .HasColumnName("diagnosis");
-            entity.Property(e => e.FkPatientId).HasColumnName("fk_patient_id");
             entity.Property(e => e.SkinPhoto)
                 .HasMaxLength(255)
                 .HasColumnName("skin_photo");
-
-            /*entity.HasOne(d => d.FkPatient).WithMany(p => p.Results)
-                .HasForeignKey(d => d.FkPatientId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("results_fk_patient_id_fkey");*/
         });
 
         OnModelCreatingPartial(modelBuilder);

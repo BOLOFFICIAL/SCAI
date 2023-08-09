@@ -47,10 +47,13 @@
                     <label asp-for="Age">Возраст пациента:</label>
                     <input asp-for="Age" required />
                 </div>
-                <div>
-                    <label asp-for="Gender">Пол пациента:</label>
-                    <input asp-for="Gender" required />
-                </div>
+            <div>
+                <label asp-for="Gender">Пол пациента:</label>
+                <select asp-for="Gender" class="form-control" required>
+                    <option value="Мужской">Мужской</option>
+                    <option value="Женский">Женский</option>
+                </select>
+            </div>
                 <div>
                 <input type="submit" value="Отправить" class="btn btn-primary" />
                 </div>

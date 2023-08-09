@@ -7,7 +7,7 @@ public partial class Appointment
 {
     public int AppointmentsId { get; set; }
 
-    public string DoctorComment { get; set; }
+    public string? DoctorComment { get; set; }
 
     public int FkDoctorId { get; set; }
 

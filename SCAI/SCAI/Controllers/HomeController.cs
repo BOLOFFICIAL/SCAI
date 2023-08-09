@@ -82,7 +82,7 @@ namespace SCAI.Controllers
             }
         }
 
-        public IActionResult Result()
+        public IActionResult Result(Result resultModel)
         {
             try
             {
@@ -92,13 +92,38 @@ namespace SCAI.Controllers
                 ViewBag.BestClass = result.BestClass;
                 ViewBag.About = result.AboutCancer;
                 ViewBag.ResultMessage = result.AllResults;
-                
+
+                using (var dbContext = new ScaiDbContext())
+                {
+                    Result newResult = new Result
+                    {
+                        SkinPhoto = ViewBag.Img,
+                        Diagnosis = ViewBag.BestClass,
+                        Description = ViewBag.About
+                    };
+                    dbContext.Results.Add(newResult);
+                    dbContext.SaveChanges();
+                }
                 return View();
-            } 
-            catch 
+            }
+            catch
             {
                 return RedirectPermanent("~/Home/Index");
             }
+
+            /*{
+                try
+                {
+                    
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("", "Произошла ошибка с добавлением данных");
+                }
+                return View();
+            }
+            ModelState.AddModelError("", "Произошла ошибка с добавлением данных");*/
+            
         }
 
         [HttpGet]
@@ -128,15 +153,6 @@ namespace SCAI.Controllers
                             Gender = patientModel.Gender
                         };
                         dbContext.Patients.Add(newPatient);
-
-                        /*Result newResult = new Result
-                        {
-                            FkPatientId = patientModel.PatientsId,
-                            SkinPhoto = ViewBag.Img,
-                            Description = ViewBag.About,
-                            Diagnosis = ViewBag.BestClass
-                        };
-                        dbContext.Results.Add(newResult);*/
                         dbContext.SaveChanges();
                     }
                     return View();

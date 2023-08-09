@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using SCAI;
+using SCAI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
