@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Успешно выполнено";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/site.js"></script>
+</head>
+<body>
+    <h1>Сохранение выполнено успешно</h1>
+    <p><a href="javascript:void(0);" onclick="goBack()">Вернуться назад</a></p>
+
+    <p>Сохраненные данные:</p>
+
+    <h2>Данные из таблицы Appointments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Doctor Comment</th>
+                <th>FkDoctorId</th>
+                <th>FkPatientId</th>
+                <th>FkResultId</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Appointment != null)
+            {
+                <tr>
+                    <td>@ViewBag.Appointment.DoctorComment</td>
+                    <td>@ViewBag.Appointment.FkDoctorId</td>
+                    <td>@ViewBag.Appointment.FkPatientId</td>
+                    <td>@ViewBag.Appointment.FkResultId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

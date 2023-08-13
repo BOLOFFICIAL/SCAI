@@ -33,6 +33,18 @@
                             </li>
                         }
                     </ul>
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        var user = User as ClaimsPrincipal;
+                        var userName = user.FindFirstValue(ClaimTypes.Name);
+                        var userLastName = user.FindFirstValue(ClaimTypes.Surname);
+
+                        <div class="ml-auto align-self-center">
+                            <span class="navbar-text text-dark">
+                                Приветствуем, @userName @userLastName
+                            </span>
+                        </div>
+                    }
                 </div>
             </div>
         </nav>

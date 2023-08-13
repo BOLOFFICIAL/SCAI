@@ -79,31 +79,33 @@ namespace SCAI.Controllers
         /// <summary>
         /// Метод для входа в систему - проверка наличия данных пользователя в БД
         /// </summary>
-        /// <param name="model">Модель с данными логина и пароля из БД</param>
+        /// <param name="doctorModel">Модель с данными логина и пароля из БД</param>
         /// <returns>Представление с сообщением с результатом логина</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(DoctorLogin model, string? returnUrl = null)
+        public async Task<IActionResult> Login(Doctor doctorModel, string? returnUrl = null)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
             {
                 try
                 {
                     using (var dbContext = new ScaiDbContext())
                     {
                         // Ищем пользователя по логину
-                        var doctor = dbContext.Doctors.FirstOrDefault(d => d.Username == model.Username);
+                        var doctor = dbContext.Doctors.FirstOrDefault(d => d.Username == doctorModel.Username);
                         if (doctor != null)
                         {
                             // Хешируем введенный пользователем пароль
-                            string hashedPassword = HashPassword(model.UserPassword);
+                            string hashedPassword = HashPassword(doctorModel.UserPassword);
 
                             // Сравниваем хешированный пароль из базы данных с хеш-значением введенного пароля
                             if (doctor.UserPassword == hashedPassword)
                             {
                                 var claims = new List<Claim> 
                                 { 
-                                    new Claim(ClaimTypes.NameIdentifier, model.Username) 
+                                    new Claim(ClaimTypes.NameIdentifier, doctorModel.Username),
+                                    new Claim(ClaimTypes.Name, doctor.DoctorsFirstName),
+                                    new Claim(ClaimTypes.Surname, doctor.DoctorsLastName)
                                 };
 
                                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -116,7 +118,8 @@ namespace SCAI.Controllers
                                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
                                 //TempData["LoginMessage"] = "Вход прошел успешно!";
                                 /*if(returnUrl != null) return LocalRedirect(returnUrl);
-                                else */return RedirectToAction("Index", "Home");
+                                else */
+                                return RedirectToAction("Index", "Home");
                             }
                         }
                     }
