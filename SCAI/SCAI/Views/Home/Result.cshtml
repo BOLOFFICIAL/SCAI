@@ -16,9 +16,32 @@
         <h6 style="text-indent: 25px;">С вероятностью <strong>@ViewBag.BestValue</strong> можем сделать вывод что у вас <strong>@ViewBag.BestClass</strong></h6>
         <img src=@ViewBag.Img alt="Не удалось оторазить картинку" class="ResultImg" width="500"/>
     </div>
+
     <div style="margin-right: 20px;">
         <a href="/Home/PatientAdd" class="btn btn-primary">Добавить пациента</a>
     </div>
+
+    <!-- Форма для добавления записи в таблицу Appointments -->
+    <div style="margin-top: 20px;">
+        <h4><strong>Добавить запись в таблицу Appointments:</strong></h4>
+        <form method="post" action="/Home/AppointmentAdd">
+            <div>
+                <label for="DoctorComment">Комментарий доктора:</label>
+                <input type="text" id="DoctorComment" name="DoctorComment"/>
+
+                <label for="FkPatientId">ID пациента:</label>
+                <input type="text" id="FkPatientId" name="FkPatientId" required />
+            </div>
+            <div>
+                <!-- В этом поле передавать FkResultId -->
+                <input type="hidden" id="FkResultId" name="FkResultId" value="@ViewBag.ResultId" />
+            </div>
+            <div>
+                <input type="submit" value="Добавить запись" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+
     <br />
     <h4><strong>Подробнее о диагнозе:</strong></h4>
     <div>

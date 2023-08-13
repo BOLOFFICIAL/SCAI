@@ -13,6 +13,16 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
         });
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => 
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(20); // Настройте таймаут сессии
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddDbContext<ScaiDbContext>();
 
 var app = builder.Build();
@@ -32,6 +42,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseSession();
 //app.UseAuthentication();
 
 app.MapControllerRoute(

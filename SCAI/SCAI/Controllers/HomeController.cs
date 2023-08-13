@@ -7,6 +7,9 @@ using SCAI.Models;
 using Skin_Cancer;
 using System.Diagnostics;
 using SCAI.Models.Tables;
+using System.Security.Claims;
+using Microsoft.AspNetCore.SignalR.Protocol;
+using Microsoft.AspNetCore.Http;
 
 namespace SCAI.Controllers
 {
@@ -15,12 +18,14 @@ namespace SCAI.Controllers
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ILogger<HomeController> _logger;
-        //private ResultData _result;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private int _lastResultId;
 
-        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
+        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
             _webHostEnvironment = webHostEnvironment;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet]
@@ -82,6 +87,7 @@ namespace SCAI.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult Result(Result resultModel)
         {
             try
@@ -103,6 +109,9 @@ namespace SCAI.Controllers
                     };
                     dbContext.Results.Add(newResult);
                     dbContext.SaveChanges();
+
+                    _lastResultId = newResult.ResultsId;
+                    _httpContextAccessor.HttpContext.Session.SetInt32("LastResultId", _lastResultId);
                 }
                 return View();
             }
@@ -110,26 +119,11 @@ namespace SCAI.Controllers
             {
                 return RedirectPermanent("~/Home/Index");
             }
-
-            /*{
-                try
-                {
-                    
-                }
-                catch (Exception)
-                {
-                    ModelState.AddModelError("", "Произошла ошибка с добавлением данных");
-                }
-                return View();
-            }
-            ModelState.AddModelError("", "Произошла ошибка с добавлением данных");*/
-            
         }
 
         [HttpGet]
-        public IActionResult PatientAdd(string returnUrl = null)
+        public IActionResult PatientAdd()
         {
-            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
@@ -166,46 +160,52 @@ namespace SCAI.Controllers
 
         }
 
-        /*[HttpPost]
-        public IActionResult AppointmentAdd(Patient patientModel)
+        [HttpGet]
+        public IActionResult AppointmentAdd()
         {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    using (var dbContext = new ScaiDbContext())
-                    {
-                        Patient newPatient = new Patient
-                        {
-                            PatientsFirstName = patientModel.PatientsFirstName,
-                            PatientsLastName = patientModel.PatientsLastName,
-                            PatientsMiddleName = patientModel.PatientsMiddleName,
-                            PatientsPhoto = patientModel.PatientsPhoto,
-                            PassportData = patientModel.PassportData,
-                            Age = patientModel.Age,
-                            Gender = patientModel.Gender
-                        };
-                        dbContext.Patients.Add(newPatient);
+            return View();
+        }
 
-                        *//*Result newResult = new Result
-                        {
-                            FkPatientId = patientModel.PatientsId,
-                            SkinPhoto = ViewBag.Img,
-                            Description = ViewBag.About,
-                            Diagnosis = ViewBag.BestClass
-                        };
-                        dbContext.Results.Add(newResult);*//*
-                        dbContext.SaveChanges();
-                    }
-                    return View();
-                }
-                catch (Exception ex)
+        [HttpPost]
+        public IActionResult AppointmentAdd(Appointment appointmentModel)
+        {
+            try
+            {
+                using (var dbContext = new ScaiDbContext())
                 {
-                    ModelState.AddModelError("", ex.Message);
+                    var user = User;
+                    var doctorUsername = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                    // Найдите доктора по Username
+                    var doctor = dbContext.Doctors.FirstOrDefault(d => d.Username == doctorUsername);
+                    if (doctor != null) 
+                    {
+                        Appointment newAppointment = new Appointment
+                        {
+                            DoctorComment = appointmentModel.DoctorComment,
+                            FkDoctorId = doctor.DoctorsId,
+                            FkPatientId = appointmentModel.FkPatientId,
+                            FkResultId = _httpContextAccessor.HttpContext.Session.GetInt32("LastResultId") ?? 1,
+                        };
+                        dbContext.Appointments.Add(newAppointment);
+                        dbContext.SaveChanges();
+
+                        // Сохраненная запись с текущим id
+                        var savedAppointment = dbContext.Appointments.FirstOrDefault(a => a.AppointmentsId == newAppointment.AppointmentsId);
+
+                        // Запись в ViewBag
+                        ViewBag.Appointment = savedAppointment;
+
+                        return View("AppointmentAdd");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
             return View();
-        }*/
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
