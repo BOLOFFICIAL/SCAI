@@ -34,6 +34,7 @@ namespace SCAI.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();
@@ -128,7 +129,7 @@ namespace SCAI.Controllers
         }
 
         [HttpPost]
-        public IActionResult PatientAdd(Patient patientModel, string returnUrl = null)
+        public IActionResult PatientAdd(Patient patientModel, IFormFile patientsPhoto, string returnUrl = null)
         {
             if (ModelState.IsValid)
             {
@@ -136,6 +137,23 @@ namespace SCAI.Controllers
                 {
                     using (var dbContext = new ScaiDbContext())
                     {
+                        // Обработка изображения
+                        if (patientsPhoto != null && patientsPhoto.Length > 0)
+                        {
+                            var uniqueFileName = Guid.NewGuid().ToString() + "_" + patientsPhoto.FileName;
+                            var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "patientPhotos");
+                            if (!Directory.Exists(imagePath))
+                            {
+                                Directory.CreateDirectory(imagePath);
+                            }
+                            var filePath = Path.Combine(imagePath, uniqueFileName);
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                patientsPhoto.CopyTo(fileStream);
+                            }
+                            patientModel.PatientsPhoto = "patientPhotos/" + uniqueFileName; // Сохраняем путь в модель
+                        }
+
                         Patient newPatient = new Patient
                         {
                             PatientsFirstName = patientModel.PatientsFirstName,
@@ -156,8 +174,8 @@ namespace SCAI.Controllers
                     ModelState.AddModelError("", ex.Message);
                 }
             }
+            ModelState.AddModelError("", "Произошла непредвиденная ошибка"); // Пользователь не найден или пароль неверный - отображаем сообщение об ошибке
             return View();
-
         }
 
         [HttpGet]
