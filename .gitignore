@@ -67,3 +67,5 @@ ngrok.exe
 /.vs/SCAI/FileContentIndex/e31cff1a-8cb6-457f-86f4-a715c727ddb5.vsidx
 /.vs/VSWorkspaceState.json
 /SCAI/SCAI/wwwroot/files
+/SCAI/SCAI/bin/Debug/net7.0/SCAI.exe
+/SCAI/SCAI/obj/Debug/net7.0/apphost.exe
