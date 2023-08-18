@@ -71,7 +71,7 @@ namespace SCAI.Controllers
                         imageFile.CopyTo(fileStream);
                     }
                     TempData["Img"] = SCAIHelp.GetLocalFilePath(filePath);
-                    TempData["Result"] = JsonConvert.SerializeObject(new ResultData(MlAnalis.Analise(filePath)));
+                    TempData["Result"] = JsonConvert.SerializeObject(new ResultData(Skin_Cancer.Analise.OnnxAnalysePhoto(filePath)));
                     return RedirectPermanent("~/Home/Result");
                 }
                 catch (Exception ex)

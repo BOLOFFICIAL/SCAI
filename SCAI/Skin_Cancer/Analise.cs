@@ -59,19 +59,36 @@ namespace Skin_Cancer
             return pixelValues;
         }
 
-        public List<float> AnalisePhoto(string puth)
+        public static Dictionary<string, float> OnnxAnalysePhoto(string path)
         {
             var modelPath = "D:\\Projects\\SCAI\\SCAI\\Skin_Cancer\\Skin_Cancer.onnx";
             using (var session = new InferenceSession(modelPath))
             {
                 var inputName = session.InputMetadata.Keys.First();
                 var outputName = session.OutputMetadata.Keys.First();
-                var inputTensor = PreprocessImage(puth);
+
+                var inputTensor = PreprocessImage(path);
                 var inputs = new NamedOnnxValue[] { NamedOnnxValue.CreateFromTensor(inputName, inputTensor) };
                 var outputs = session.Run(inputs);
                 var outputTensor = outputs.First().AsTensor<float>();
-                return outputTensor.ToList(); 
+
+                var probabilities = outputTensor.ToList();
+                var classNames = GetClassNames(); // Assuming you have a method to get class names
+
+                var result = new Dictionary<string, float>();
+                for (int i = 0; i < classNames.Length; i++)
+                {
+                    result[classNames[i]] = probabilities[i];
+                }
+
+                return result.OrderByDescending(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
             }
+        }
+
+        private static string[] GetClassNames()
+        {
+            var classes = new string[] {"1","2", "3", "4", "5", "6", "7" };
+            return classes;
         }
     }
 }
