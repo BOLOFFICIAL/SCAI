@@ -8,15 +8,25 @@ using System.Security.Cryptography;
 using System.Security.Claims;
 using SCAI.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
 
 namespace SCAI.Controllers
 {
     [AllowAnonymous]
     public class AccountController : Controller
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public AccountController(IWebHostEnvironment webHostEnvironment)
+        {
+            _webHostEnvironment = webHostEnvironment;
+        }
+
         [HttpGet]
         public IActionResult Registration()
         {
+            ClaimsPrincipal claimsUser = HttpContext.User;
+            if (claimsUser.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -33,9 +43,10 @@ namespace SCAI.Controllers
         /// </summary>
         /// <param name="model">Модель с полями для регистрации в БД</param>
         /// <returns>Представление с сообщением с результатом регистрации</returns>
+        /// 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(DoctorRegistration model) 
+        public ActionResult Registration(DoctorRegistration model, IFormFile doctorsPhoto) 
         { 
             if (ModelState.IsValid) 
             {
@@ -49,6 +60,24 @@ namespace SCAI.Controllers
                             ModelState.AddModelError("Username", "Логин уже используется. Пожалуйста, выберите другой логин.");
                             return View(model); // Возвращаем представление с ошибкой
                         }
+
+                        // Обработка изображения
+                        if (doctorsPhoto != null && doctorsPhoto.Length > 0)
+                        {
+                            var uniqueFileName = Guid.NewGuid().ToString() + "_" + doctorsPhoto.FileName;
+                            var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "doctorsPhotos");
+                            if (!Directory.Exists(imagePath))
+                            {
+                                Directory.CreateDirectory(imagePath);
+                            }
+                            var filePath = Path.Combine(imagePath, uniqueFileName);
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                doctorsPhoto.CopyTo(fileStream);
+                            }
+                            model.DoctorsPhoto = "doctorsPhotos/" + uniqueFileName; // Сохраняем путь в модель
+                        }
+
                         // Создаем объект Doctor на основе данных из модели Registration
                         Doctor newDoctor = new Doctor
                         {
