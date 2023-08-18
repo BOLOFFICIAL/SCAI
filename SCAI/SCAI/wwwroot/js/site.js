@@ -21,6 +21,21 @@ function handleDrop(event) {
     submitForm();
 }
 
+function previewImage(input) {
+    var imgPreview = document.getElementById('imagePreview');
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        imgPreview.src = '#';
+        imgPreview.style.display = 'none';
+    }
+}
+
 function showPreview(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();

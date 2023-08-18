@@ -12,13 +12,16 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="~/js/site.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Mulish:wght@200;300&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Добавление нового пациента</h1>
     <br />
     <div style="float: left; width: 300px; margin-right: 20px;">
             <h4><strong>Введите данные пациента:</strong></h4>
-            <form method="post" action="@Url.Action("PatientAdd", "Home")">
+            <form method="post" action="@Url.Action("PatientAdd", "Home")" enctype="multipart/form-data">
                 @if (!string.IsNullOrEmpty(returnUrl))
                 {
                     <input type="hidden" name="returnUrl" value="@returnUrl" />
@@ -32,12 +35,14 @@
                     <input asp-for="PatientsFirstName" required />
                 </div>
                 <div>
-                    <label asp-for="PatientsMiddleName">Отчество пациента:</label>
+                    <label asp-for="PatientsMiddleName">Отчество пациента (если имеется):</label>
                     <input asp-for="PatientsMiddleName" />
                 </div>
                 <div>
                     <label asp-for="PatientsPhoto">Фото пациента:</label>
-                    <input asp-for="PatientsPhoto" />
+                <input type="file" id="PatientsPhoto" name="patientsPhoto" accept="image/*" class="form-control-file" onchange="previewImage(this);" />
+                <img id="imagePreview" src="#" alt="Выберите изображение"
+                     style="max-width: 100%; max-height: 200px; display: none; border: 2px solid #2158b8; padding: 10px;" />
                 </div>
                 <div>
                     <label asp-for="PassportData">Паспортные данные пациента:</label>
